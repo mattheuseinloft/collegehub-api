@@ -1,9 +1,9 @@
 <h1 align="center">
-  :books: CollegeHub
+  :books: CollegeHub API
 </h1>
 
 <h4 align="center">
-  💈Node.js back-end for CollegeHub, a collaborative study application
+  :books: Node.js back-end for CollegeHub, a collaborative study application
 </h4>
 
 <p align="center">

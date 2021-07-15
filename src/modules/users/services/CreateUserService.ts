@@ -1,5 +1,8 @@
-import UsersRepository from '../infra/typeorm/repositories/UsersRepository';
+import { injectable, inject } from 'tsyringe';
+
 import IUsersRepository from '../repositories/IUsersRepository';
+
+import User from '../infra/typeorm/entities/User';
 
 interface IRequest {
   name: string;
@@ -7,14 +10,14 @@ interface IRequest {
   password: string;
 }
 
+@injectable()
 class CreateUserService {
-  private usersRepository: IUsersRepository;
+  constructor(
+    @inject('UsersRepository')
+    private usersRepository: IUsersRepository,
+  ) {}
 
-  constructor() {
-    this.usersRepository = new UsersRepository();
-  }
-
-  public async execute({ name, email, password }: IRequest): Promise<any> {
+  public async execute({ name, email, password }: IRequest): Promise<User> {
     const user = await this.usersRepository.create({
       name,
       email,
